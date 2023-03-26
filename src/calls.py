@@ -10,23 +10,25 @@ class Test:
     def test(self):
         print(make_random_ayah_request("en"))
         print(make_random_ayah_request("ar"))
+        print(get_prayer_time())
         
 
 
 def make_random_ayah_request(version):
     if (version=="en"):
-        print("english version")
         random_ayah=random() * TOTAL_VERSE
         new_url=f"{URL}{random_ayah}/en.asad"
         json_response= json.loads(requests.get(new_url).text)
         return json_response
 
     elif (version=="ar"):
-        print("arabic version")
         random_ayah=random() * TOTAL_VERSE
         new_url=f"{URL}{random_ayah}"
         json_response= json.loads(requests.get(new_url).text)
         return json_response
+
+def get_prayer_time():
+    
 
 
 if __name__=="__main__":
