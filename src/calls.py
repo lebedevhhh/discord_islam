@@ -16,12 +16,7 @@ dict_author={
     2: "sahih-muslim"
 }
 
-class Test:
-    def test(self):
-        print(make_random_ayah_request("en"))
-        # print(make_random_ayah_request("ar"))
-        # print(get_hadith())
-        
+
 
 
 def make_random_ayah_request(version):
@@ -37,14 +32,10 @@ def make_random_ayah_request(version):
         json_response= json.loads(requests.get(new_url).text)
         return json_response
 
-def get_hadith():
+def make_random_hadith_request():
     rdm_hadith = int(random() * MAX_HADITH)
     rdm_idx_for_book=int(random() * 2)
     URL_Hadith=f'https://www.hadithapi.com/api/hadiths?apiKey={API_KEY}&hadithNumber={rdm_hadith}&paginate={Default_Pagination}&book={dict_author[1]}'
     content=requests.get(URL_Hadith).text
     json_response=json.loads(content)
     return json_response['hadiths']['data'][0]
-
-if __name__=="__main__":
-    t=Test()
-    t.test()
